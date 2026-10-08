@@ -1,0 +1,22 @@
+services:
+  # =====================================================================
+  # CineGo Full-Stack Web Service (Backend REST API + Static React SPA)
+  # =====================================================================
+  - type: web
+    name: cinego-fullstack
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://cinego-fullstack.onrender.com

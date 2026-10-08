@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #070709;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  html.light body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070709; 
+  }
+  html.light ::-webkit-scrollbar-track {
+    background: #f1f5f9; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a; 
+    border-radius: 3px;
+  }
+  html.light ::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e50914; 
+  }
+}
+
+@layer components {
+  /* Classy High-Performance Cards (Hardware Accelerated, Zero Backdrop Blur Lag) */
+  .glass-card {
+    @apply bg-zinc-950/95 border border-white/10 shadow-lg hover:border-white/20 transition-all duration-150;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  html.light .glass-card {
+    background-color: rgba(255, 255, 255, 0.98);
+    border-color: rgba(226, 232, 240, 0.9);
+    color: #0f172a;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  }
+
+  html.light .glass-card:hover {
+    border-color: rgba(203, 213, 225, 1);
+  }
+
+  .glass-card-glow {
+    @apply bg-gradient-to-br from-zinc-900/95 via-zinc-950/95 to-black/95 border border-white/15 shadow-[0_12px_40px_rgba(229,9,20,0.12)] hover:border-primary/40 transition-all duration-150;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  html.light .glass-card-glow {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
+    border-color: rgba(226, 232, 240, 0.9);
+    color: #0f172a;
+    box-shadow: 0 12px 30px rgba(229, 9, 20, 0.08);
+  }
+
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #ffffff, #e4e4e7, #a1a1aa);
+  }
+
+  html.light .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #0f172a, #1e293b, #475569);
+  }
+
+  .gradient-primary {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #e50914, #f43f5e, #fbbf24);
+  }
+
+  /* Cinematic Seat Map */
+  .seat-available {
+    @apply border-2 border-emerald-500 bg-emerald-500/10 hover:bg-emerald-500/30 cursor-pointer transition-colors shadow-sm;
+  }
+  .seat-selected {
+    @apply bg-blue-500 border-2 border-blue-400 shadow-[0_0_14px_rgba(59,130,246,0.7)] cursor-pointer text-white scale-105 transition-transform;
+  }
+  .seat-booked {
+    @apply bg-zinc-800 border-2 border-zinc-700/60 cursor-not-allowed opacity-40;
+  }
+  html.light .seat-booked {
+    @apply bg-slate-300 border-2 border-slate-400/60 cursor-not-allowed opacity-60;
+  }
+  .seat-locked {
+    @apply bg-amber-500/80 border-2 border-amber-400 cursor-not-allowed opacity-80;
+  }
+
+  /* Cinema Curved Projection Screen */
+  .cinema-screen {
+    @apply w-full h-8 border-t-[4px] border-primary/90 rounded-[50%] shadow-[0_-20px_40px_rgba(229,9,20,0.35)];
+  }
+}
+
+/* ======================================================== */
+/* LIGHT THEME COMPREHENSIVE ADAPTATION                     */
+/* ======================================================== */
+html.light header {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.light footer {
+  background-color: #f1f5f9 !important;
+  border-top-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+/* Light text contrast */
+html.light .text-white {
+  color: #0f172a;
+}
+html.light .text-zinc-100,
+html.light .text-zinc-200,
+html.light .text-zinc-300 {
+  color: #334155;
+}
+html.light .text-zinc-400 {
+  color: #64748b;
+}
+html.light .text-zinc-500 {
+  color: #64748b;
+}
+
+/* Preserve white text on dark/colored buttons, badges and banners */
+html.light .bg-primary .text-white,
+html.light .bg-primary span,
+html.light button.bg-primary,
+html.light button.bg-primary span,
+html.light button.bg-emerald-600,
+html.light button.bg-emerald-600 span,
+html.light button.bg-purple-600,
+html.light button.bg-purple-600 span,
+html.light button.bg-blue-600,
+html.light button.bg-blue-600 span,
+html.light .bg-gradient-to-r .text-white,
+html.light .bg-gradient-to-r span,
+html.light .text-primary,
+html.light .bg-primary\/20,
+html.light .bg-primary\/30 {
+  color: inherit;
+}
+
+html.light button.bg-primary,
+html.light .bg-primary {
+  color: #ffffff !important;
+}
+html.light button.bg-primary span {
+  color: #ffffff !important;
+}
+
+/* Light mode backgrounds */
+html.light .bg-zinc-950,
+html.light .bg-zinc-900,
+html.light .bg-\[\#070709\],
+html.light .bg-dark,
+html.light .bg-dark-100 {
+  background-color: #ffffff;
+}
+
+html.light .bg-zinc-950\/80,
+html.light .bg-zinc-900\/80,
+html.light .bg-zinc-900\/50,
+html.light .bg-zinc-900\/60,
+html.light .bg-zinc-950\/90 {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+html.light .bg-zinc-950\/50,
+html.light .bg-zinc-900\/40,
+html.light .bg-zinc-900\/30 {
+  background-color: rgba(248, 250, 252, 0.85);
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: #e2e8f0;
+}
+
+html.light .from-\[\#070709\],
+html.light .via-\[\#070709\],
+html.light .to-\[\#070709\] {
+  --tw-gradient-from: #f8fafc var(--tw-gradient-from-position);
+  --tw-gradient-to: #f8fafc var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}

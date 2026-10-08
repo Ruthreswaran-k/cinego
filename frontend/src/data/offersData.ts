@@ -1,0 +1,596 @@
+export type OfferCategory = 'ALL' | 'BANK_CARDS' | 'UPI_WALLETS' | 'CINEMA_COUPONS';
+
+export interface OfferItem {
+  id: string;
+  code: string;
+  title: string;
+  subtitle: string;
+  bankOrIssuer: string;
+  category: 'BANK_CARDS' | 'UPI_WALLETS' | 'CINEMA_COUPONS';
+  discountType: 'BOGO' | 'PERCENTAGE' | 'FLAT';
+  discountValue: number; // Flat amount or percentage
+  discountDisplay: string;
+  minOrder: number;
+  maxDiscount: number;
+  validUntil: string;
+  cardType: string; // e.g. "Credit Cards", "Debit & Credit", "UPI", "All Users"
+  badge: string;
+  gradient: string;
+  borderAccent: string;
+  terms: string[];
+}
+
+export const ALL_OFFERS: OfferItem[] = [
+  // =================== 1. BANK CREDIT & DEBIT CARDS ===================
+  {
+    id: 'OFF_AXIS_BOGO',
+    code: 'AXISBOGO',
+    title: 'Axis Bank MY ZONE Credit Card',
+    subtitle: 'Buy 1 Get 1 Free on movie tickets (up to ₹200)',
+    bankOrIssuer: 'Axis Bank',
+    category: 'BANK_CARDS',
+    discountType: 'BOGO',
+    discountValue: 200,
+    discountDisplay: 'BUY 1 GET 1 FREE',
+    minOrder: 300,
+    maxDiscount: 200,
+    validUntil: '31 Dec 2026',
+    cardType: 'Axis Bank MY ZONE Credit Card',
+    badge: 'BOGO Exclusive',
+    gradient: 'from-[#97144D] via-[#700d38] to-[#2c0516]',
+    borderAccent: 'border-[#97144D]',
+    terms: [
+      'Valid only on Axis Bank MY ZONE Credit Cards.',
+      'Buy 1 ticket and get 2nd ticket free up to maximum ₹200.',
+      'Customer must select minimum 2 seats to avail the BOGO benefit.',
+      'Valid once per calendar month per cardholder.',
+    ],
+  },
+  {
+    id: 'OFF_AXIS_15',
+    code: 'AXIS15',
+    title: 'Axis Bank Neo & Rewards Cards',
+    subtitle: 'Flat 15% instant discount up to ₹150 on cinema tickets',
+    bankOrIssuer: 'Axis Bank',
+    category: 'BANK_CARDS',
+    discountType: 'PERCENTAGE',
+    discountValue: 15,
+    discountDisplay: '15% OFF',
+    minOrder: 350,
+    maxDiscount: 150,
+    validUntil: '31 Dec 2026',
+    cardType: 'Axis Bank Credit & Debit Cards',
+    badge: 'Instant Savings',
+    gradient: 'from-[#97144D] via-[#5c0a2e] to-zinc-950',
+    borderAccent: 'border-[#97144D]/60',
+    terms: [
+      'Valid on Axis Bank Neo, Rewards, and Flipkart Axis Bank Credit Cards.',
+      'Maximum discount capped at ₹150 per transaction.',
+      'Minimum booking amount of ₹350 required.',
+    ],
+  },
+  {
+    id: 'OFF_HDFC_MILLENNIA',
+    code: 'HDFCMILLENNIA',
+    title: 'HDFC Bank Millennia & Regalia',
+    subtitle: '20% Instant Discount up to ₹250 on minimum 2 tickets',
+    bankOrIssuer: 'HDFC Bank',
+    category: 'BANK_CARDS',
+    discountType: 'PERCENTAGE',
+    discountValue: 20,
+    discountDisplay: '20% OFF',
+    minOrder: 400,
+    maxDiscount: 250,
+    validUntil: '30 Nov 2026',
+    cardType: 'HDFC Regalia, Millennia & Diners',
+    badge: 'Popular Choice',
+    gradient: 'from-[#004c8f] via-[#002d59] to-zinc-950',
+    borderAccent: 'border-[#004c8f]',
+    terms: [
+      'Applicable on HDFC Bank Regalia, Millennia, Diners Club, and Infinia cards.',
+      'Minimum of 2 tickets must be booked.',
+      'Maximum discount ₹250 per transaction.',
+      'Valid twice per card per calendar month.',
+    ],
+  },
+  {
+    id: 'OFF_HDFC_TIMES',
+    code: 'HDFCTIMES',
+    title: 'HDFC Bank Times Credit Card',
+    subtitle: '25% Instant Savings round the year on all showtimes',
+    bankOrIssuer: 'HDFC Bank',
+    category: 'BANK_CARDS',
+    discountType: 'PERCENTAGE',
+    discountValue: 25,
+    discountDisplay: '25% OFF',
+    minOrder: 300,
+    maxDiscount: 200,
+    validUntil: '31 Dec 2026',
+    cardType: 'HDFC Times Credit Card',
+    badge: 'Entertainment Special',
+    gradient: 'from-[#004c8f] via-[#003870] to-[#001830]',
+    borderAccent: 'border-[#004c8f]/70',
+    terms: [
+      'Exclusive to HDFC Times Platinum & Titanium cardholders.',
+      'Get 25% discount on all movie ticket reservations up to ₹200.',
+      'Valid across all cinema formats (2D, 3D, IMAX).',
+    ],
+  },
+  {
+    id: 'OFF_ICICI_BOGO',
+    code: 'ICICIBOGO',
+    title: 'ICICI Bank Gemstone Credit Cards',
+    subtitle: 'Buy 1 Get 1 Free up to ₹250 on Coral, Rubyx & Sapphiro',
+    bankOrIssuer: 'ICICI Bank',
+    category: 'BANK_CARDS',
+    discountType: 'BOGO',
+    discountValue: 250,
+    discountDisplay: 'BUY 1 GET 1 FREE',
+    minOrder: 350,
+    maxDiscount: 250,
+    validUntil: '31 Dec 2026',
+    cardType: 'ICICI Coral, Rubyx & Sapphiro',
+    badge: 'BOGO Premium',
+    gradient: 'from-[#f37021] via-[#aa4506] to-zinc-950',
+    borderAccent: 'border-[#f37021]',
+    terms: [
+      'Buy 1 ticket and get the 2nd ticket free up to ₹250.',
+      'Minimum 2 tickets must be selected.',
+      'Valid on ICICI Bank Coral, Rubyx, Sapphiro, and Emeralde Credit Cards.',
+      'Available twice per month per user.',
+    ],
+  },
+  {
+    id: 'OFF_ICICI_25',
+    code: 'ICICI25',
+    title: 'ICICI Bank Weekend Cine Treats',
+    subtitle: '25% Instant Savings up to ₹150 on Friday to Sunday shows',
+    bankOrIssuer: 'ICICI Bank',
+    category: 'BANK_CARDS',
+    discountType: 'PERCENTAGE',
+    discountValue: 25,
+    discountDisplay: '25% OFF',
+    minOrder: 300,
+    maxDiscount: 150,
+    validUntil: '31 Dec 2026',
+    cardType: 'All ICICI Bank Cards',
+    badge: 'Weekend Rush',
+    gradient: 'from-[#d8580c] via-[#7d2e03] to-zinc-950',
+    borderAccent: 'border-[#f37021]/60',
+    terms: [
+      'Valid on all ICICI Bank Credit & Debit cards.',
+      'Valid for Friday, Saturday, and Sunday screenings.',
+      'Max discount ₹150 on min booking of ₹300.',
+    ],
+  },
+  {
+    id: 'OFF_SBI_ELITE',
+    code: 'SBIELITE',
+    title: 'SBI Card ELITE Privilege',
+    subtitle: 'Complimentary movie tickets up to ₹250 twice every month',
+    bankOrIssuer: 'SBI Card',
+    category: 'BANK_CARDS',
+    discountType: 'FLAT',
+    discountValue: 250,
+    discountDisplay: 'FLAT ₹250 OFF',
+    minOrder: 400,
+    maxDiscount: 250,
+    validUntil: '31 Dec 2026',
+    cardType: 'SBI Card ELITE & AURUM',
+    badge: 'Luxury Privilege',
+    gradient: 'from-[#0091df] via-[#004e7c] to-zinc-950',
+    borderAccent: 'border-[#0091df]',
+    terms: [
+      'Exclusive for SBI Card ELITE and SBI Card AURUM holders.',
+      'Flat ₹250 discount on minimum booking of ₹400.',
+      'Available twice every calendar month.',
+    ],
+  },
+  {
+    id: 'OFF_SBI_CINE',
+    code: 'SBICINE',
+    title: 'SBI Card SimplyCLICK Cinema Cashback',
+    subtitle: 'Flat ₹100 Instant Discount on movie tickets',
+    bankOrIssuer: 'SBI Card',
+    category: 'BANK_CARDS',
+    discountType: 'FLAT',
+    discountValue: 100,
+    discountDisplay: 'FLAT ₹100 OFF',
+    minOrder: 300,
+    maxDiscount: 100,
+    validUntil: '31 Dec 2026',
+    cardType: 'SBI SimplyCLICK & SimplySAVE',
+    badge: 'Cashback Deal',
+    gradient: 'from-[#0077b6] via-[#023e8a] to-zinc-950',
+    borderAccent: 'border-[#0091df]/60',
+    terms: [
+      'Flat ₹100 instant rebate on min cart value of ₹300.',
+      'Valid on SBI SimplyCLICK and SimplySAVE Credit Cards.',
+      'Valid once per card per month.',
+    ],
+  },
+  {
+    id: 'OFF_KOTAK_BOGO',
+    code: 'KOTAKBOGO',
+    title: 'Kotak Mahindra Bank PVR & Delight',
+    subtitle: 'Buy 1 Get 1 Free on all 2D, 3D & IMAX tickets up to ₹200',
+    bankOrIssuer: 'Kotak Mahindra Bank',
+    category: 'BANK_CARDS',
+    discountType: 'BOGO',
+    discountValue: 200,
+    discountDisplay: 'BUY 1 GET 1 FREE',
+    minOrder: 300,
+    maxDiscount: 200,
+    validUntil: '31 Dec 2026',
+    cardType: 'Kotak Delight, White & PVR Cards',
+    badge: 'BOGO Offer',
+    gradient: 'from-[#ed1c24] via-[#85080c] to-zinc-950',
+    borderAccent: 'border-[#ed1c24]',
+    terms: [
+      'Valid on Kotak Delight, White, and Kotak PVR Platinum Credit Cards.',
+      'Buy 1 ticket and get the 2nd ticket free up to ₹200.',
+      'Minimum 2 seats must be selected.',
+    ],
+  },
+  {
+    id: 'OFF_INDUS_BOGO',
+    code: 'INDUSBOGO',
+    title: 'IndusInd Bank Legend Credit Card',
+    subtitle: 'Buy 1 Get 1 Free ticket up to ₹200 monthly',
+    bankOrIssuer: 'IndusInd Bank',
+    category: 'BANK_CARDS',
+    discountType: 'BOGO',
+    discountValue: 200,
+    discountDisplay: 'BUY 1 GET 1 FREE',
+    minOrder: 300,
+    maxDiscount: 200,
+    validUntil: '31 Dec 2026',
+    cardType: 'IndusInd Legend, Pinnacle & Platinum',
+    badge: 'BOGO Privilege',
+    gradient: 'from-[#8a1538] via-[#4d0b1f] to-zinc-950',
+    borderAccent: 'border-[#8a1538]',
+    terms: [
+      'Buy one ticket and get the second ticket free up to ₹200.',
+      'Valid on IndusInd Bank Legend, Pinnacle, and Platinum Credit Cards.',
+      'Valid for 1 transaction per month.',
+    ],
+  },
+  {
+    id: 'OFF_RBL_FREE',
+    code: 'RBLFREE',
+    title: 'RBL Bank Play & Popcorn Credit Card',
+    subtitle: 'Flat ₹250 Discount on monthly entertainment outings',
+    bankOrIssuer: 'RBL Bank',
+    category: 'BANK_CARDS',
+    discountType: 'FLAT',
+    discountValue: 250,
+    discountDisplay: 'FLAT ₹250 OFF',
+    minOrder: 400,
+    maxDiscount: 250,
+    validUntil: '31 Dec 2026',
+    cardType: 'RBL Bank Play Credit Card',
+    badge: 'Cinema Fanatic',
+    gradient: 'from-[#003865] via-[#001e38] to-zinc-950',
+    borderAccent: 'border-[#003865]',
+    terms: [
+      'Exclusive to RBL Bank Play Credit Cardholders.',
+      'Enjoy up to ₹250 off per month on movie ticket bookings.',
+      'Minimum booking amount of ₹400.',
+    ],
+  },
+  {
+    id: 'OFF_FED_15',
+    code: 'FED15',
+    title: 'Federal Bank Cards Special',
+    subtitle: '15% instant reduction up to ₹125 on movie tickets',
+    bankOrIssuer: 'Federal Bank',
+    category: 'BANK_CARDS',
+    discountType: 'PERCENTAGE',
+    discountValue: 15,
+    discountDisplay: '15% OFF',
+    minOrder: 300,
+    maxDiscount: 125,
+    validUntil: '31 Dec 2026',
+    cardType: 'Federal Bank Debit & Credit Cards',
+    badge: 'Smart Saver',
+    gradient: 'from-[#00509d] via-[#002b54] to-zinc-950',
+    borderAccent: 'border-[#00509d]/70',
+    terms: [
+      'Valid on Federal Bank Celesta, Imperio, and Signet Cards.',
+      'Flat 15% discount up to ₹125 on min spend of ₹300.',
+      'Applicable across all cities and screens.',
+    ],
+  },
+  {
+    id: 'OFF_AU_BOGO',
+    code: 'AUBOGO',
+    title: 'AU Small Finance Bank Zenith / Vetta',
+    subtitle: 'Buy 1 Get 1 Free movie ticket up to ₹250',
+    bankOrIssuer: 'AU Bank',
+    category: 'BANK_CARDS',
+    discountType: 'BOGO',
+    discountValue: 250,
+    discountDisplay: 'BUY 1 GET 1 FREE',
+    minOrder: 350,
+    maxDiscount: 250,
+    validUntil: '31 Dec 2026',
+    cardType: 'AU Zenith & Vetta Credit Cards',
+    badge: 'BOGO Royale',
+    gradient: 'from-[#6a1b9a] via-[#38006b] to-zinc-950',
+    borderAccent: 'border-[#6a1b9a]',
+    terms: [
+      'Buy 1 Get 1 Free on AU Bank Zenith & Vetta Credit Cards.',
+      'Maximum discount capped at ₹250 on the second ticket.',
+      'Valid on 2 or more tickets.',
+    ],
+  },
+
+  // =================== 2. UPI & DIGITAL WALLETS ===================
+  {
+    id: 'OFF_PAYTM_100',
+    code: 'PAYTM100',
+    title: 'PayTM UPI Cashback Fiesta',
+    subtitle: 'Flat ₹100 Instant Discount on ticket orders above ₹300',
+    bankOrIssuer: 'PayTM',
+    category: 'UPI_WALLETS',
+    discountType: 'FLAT',
+    discountValue: 100,
+    discountDisplay: 'FLAT ₹100 OFF',
+    minOrder: 300,
+    maxDiscount: 100,
+    validUntil: '31 Dec 2026',
+    cardType: 'PayTM UPI & Wallet',
+    badge: 'Instant UPI',
+    gradient: 'from-[#00b9f1] via-[#006699] to-zinc-950',
+    borderAccent: 'border-[#00b9f1]',
+    terms: [
+      'Pay using PayTM UPI (@paytm VPA) during checkout.',
+      'Flat ₹100 instant discount on orders of ₹300 or more.',
+      'Valid once per user every 30 days.',
+    ],
+  },
+  {
+    id: 'OFF_GPAY_50',
+    code: 'GPAY50',
+    title: 'Google Pay Movie Scratch Reward',
+    subtitle: 'Flat ₹50 Instant Rebate on any cinema booking',
+    bankOrIssuer: 'Google Pay',
+    category: 'UPI_WALLETS',
+    discountType: 'FLAT',
+    discountValue: 50,
+    discountDisplay: 'FLAT ₹50 OFF',
+    minOrder: 200,
+    maxDiscount: 50,
+    validUntil: '31 Dec 2026',
+    cardType: 'Google Pay (UPI)',
+    badge: 'Fast Checkout',
+    gradient: 'from-[#1a73e8] via-[#0c448c] to-zinc-950',
+    borderAccent: 'border-[#1a73e8]',
+    terms: [
+      'Valid when completing payment with Google Pay.',
+      'Flat ₹50 price reduction with minimum ₹200 booking.',
+      'Valid for all users.',
+    ],
+  },
+  {
+    id: 'OFF_PHONEPE_75',
+    code: 'PHONEPE75',
+    title: 'PhonePe RuPay Credit Card on UPI',
+    subtitle: 'Flat ₹75 instant discount when paying via RuPay on UPI',
+    bankOrIssuer: 'PhonePe',
+    category: 'UPI_WALLETS',
+    discountType: 'FLAT',
+    discountValue: 75,
+    discountDisplay: 'FLAT ₹75 OFF',
+    minOrder: 250,
+    maxDiscount: 75,
+    validUntil: '31 Dec 2026',
+    cardType: 'PhonePe RuPay UPI',
+    badge: 'RuPay Special',
+    gradient: 'from-[#5f259f] via-[#330f5b] to-zinc-950',
+    borderAccent: 'border-[#5f259f]',
+    terms: [
+      'Valid for RuPay Credit Card transactions on PhonePe UPI.',
+      'Flat ₹75 discount on bookings of ₹250 and above.',
+      'Valid twice per month per user.',
+    ],
+  },
+  {
+    id: 'OFF_AMZN_80',
+    code: 'AMZNPAY',
+    title: 'Amazon Pay Balance & Wallet',
+    subtitle: 'Flat ₹80 instant discount on movie ticket bookings',
+    bankOrIssuer: 'Amazon Pay',
+    category: 'UPI_WALLETS',
+    discountType: 'FLAT',
+    discountValue: 80,
+    discountDisplay: 'FLAT ₹80 OFF',
+    minOrder: 280,
+    maxDiscount: 80,
+    validUntil: '31 Dec 2026',
+    cardType: 'Amazon Pay Wallet / ICICI Card',
+    badge: 'Prime Saver',
+    gradient: 'from-[#ff9900] via-[#945500] to-zinc-950',
+    borderAccent: 'border-[#ff9900]',
+    terms: [
+      'Pay using Amazon Pay Wallet or Amazon Pay ICICI Card.',
+      'Flat ₹80 deducted at checkout on min order ₹280.',
+      'No hidden platform charges.',
+    ],
+  },
+
+  // =================== 3. CINEMA & PROMO COUPONS ===================
+  {
+    id: 'OFF_WELCOME100',
+    code: 'WELCOME100',
+    title: 'First Time User Special',
+    subtitle: 'Flat ₹100 Instant Discount on your first movie reservation',
+    bankOrIssuer: 'CineGo Exclusive',
+    category: 'CINEMA_COUPONS',
+    discountType: 'FLAT',
+    discountValue: 100,
+    discountDisplay: 'FLAT ₹100 OFF',
+    minOrder: 300,
+    maxDiscount: 100,
+    validUntil: '31 Dec 2026',
+    cardType: 'All Customers (1st Booking)',
+    badge: 'Popular',
+    gradient: 'from-[#e50914] via-[#9e050c] to-zinc-950',
+    borderAccent: 'border-primary',
+    terms: [
+      'Valid exclusively for first-time ticket bookings on CineGo.',
+      'Flat ₹100 deducted from total bill.',
+      'Minimum cart value ₹300.',
+    ],
+  },
+  {
+    id: 'OFF_CINEGO20',
+    code: 'CINEGO20',
+    title: 'Weekend Blockbuster 20%',
+    subtitle: '20% off up to ₹200 on IMAX 3D & Dolby Atmos screenings',
+    bankOrIssuer: 'CineGo Exclusive',
+    category: 'CINEMA_COUPONS',
+    discountType: 'PERCENTAGE',
+    discountValue: 20,
+    discountDisplay: '20% OFF',
+    minOrder: 400,
+    maxDiscount: 200,
+    validUntil: '31 Dec 2026',
+    cardType: 'All Formats',
+    badge: 'Trending',
+    gradient: 'from-[#b45309] via-[#78350f] to-zinc-950',
+    borderAccent: 'border-amber-500',
+    terms: [
+      '20% off up to maximum ₹200 on all IMAX and Atmos shows.',
+      'Minimum booking amount of ₹400.',
+      'Valid on Friday, Saturday, and Sunday screenings.',
+    ],
+  },
+  {
+    id: 'OFF_BLOCKBUSTER',
+    code: 'BLOCKBUSTER',
+    title: 'Big Group Booking Fiesta',
+    subtitle: 'Save Flat ₹150 when reserving 3 or more seats',
+    bankOrIssuer: 'CineGo Exclusive',
+    category: 'CINEMA_COUPONS',
+    discountType: 'FLAT',
+    discountValue: 150,
+    discountDisplay: 'FLAT ₹150 OFF',
+    minOrder: 500,
+    maxDiscount: 150,
+    validUntil: '31 Dec 2026',
+    cardType: '3+ Seats Booking',
+    badge: 'Group Deal',
+    gradient: 'from-[#7c3aed] via-[#4c1d95] to-zinc-950',
+    borderAccent: 'border-purple-500',
+    terms: [
+      'Must reserve 3 or more tickets in a single transaction.',
+      'Flat ₹150 discount applied on minimum order of ₹500.',
+      'Valid across all cinemas.',
+    ],
+  },
+  {
+    id: 'OFF_FIRST50',
+    code: 'FIRST50',
+    title: 'Quick Welcome Snack Rebate',
+    subtitle: 'Flat ₹50 rebate on standard cinema admissions',
+    bankOrIssuer: 'CineGo Exclusive',
+    category: 'CINEMA_COUPONS',
+    discountType: 'FLAT',
+    discountValue: 50,
+    discountDisplay: 'FLAT ₹50 OFF',
+    minOrder: 200,
+    maxDiscount: 50,
+    validUntil: '31 Dec 2026',
+    cardType: 'All Users',
+    badge: 'No Minimum',
+    gradient: 'from-[#2563eb] via-[#1e3a8a] to-zinc-950',
+    borderAccent: 'border-blue-500',
+    terms: [
+      'Flat ₹50 discount on orders above ₹200.',
+      'Valid once per user.',
+    ],
+  },
+  {
+    id: 'OFF_MOVIE10',
+    code: 'MOVIE10',
+    title: '10% Weekday Cine Saver',
+    subtitle: '10% instant price reduction up to ₹100 on weekday screenings',
+    bankOrIssuer: 'CineGo Exclusive',
+    category: 'CINEMA_COUPONS',
+    discountType: 'PERCENTAGE',
+    discountValue: 10,
+    discountDisplay: '10% OFF',
+    minOrder: 250,
+    maxDiscount: 100,
+    validUntil: '31 Dec 2026',
+    cardType: 'Mon - Thu Shows',
+    badge: 'Weekday Deal',
+    gradient: 'from-[#059669] via-[#064e3b] to-zinc-950',
+    borderAccent: 'border-emerald-500',
+    terms: [
+      '10% off up to ₹100 on Monday to Thursday tickets.',
+      'Minimum booking amount ₹250.',
+    ],
+  },
+];
+
+/**
+ * Helper to calculate discount for any coupon / offer code
+ */
+export const calculateOfferDiscount = (
+  code: string,
+  ticketSubtotal: number,
+  numSeats: number = 2
+): { valid: boolean; discount: number; offer?: OfferItem; message: string } => {
+  const normalized = (code || '').trim().toUpperCase();
+  const offer = ALL_OFFERS.find((o) => o.code.toUpperCase() === normalized);
+
+  if (!offer) {
+    return {
+      valid: false,
+      discount: 0,
+      message: 'Invalid coupon or offer code. Please check code and try again.',
+    };
+  }
+
+  if (ticketSubtotal < offer.minOrder) {
+    return {
+      valid: false,
+      discount: 0,
+      message: `Minimum order of ₹${offer.minOrder} required for ${offer.code}. Your subtotal is ₹${ticketSubtotal}.`,
+    };
+  }
+
+  let calculatedDiscount = 0;
+
+  if (offer.discountType === 'FLAT') {
+    calculatedDiscount = offer.discountValue;
+  } else if (offer.discountType === 'PERCENTAGE') {
+    calculatedDiscount = Math.round((ticketSubtotal * offer.discountValue) / 100);
+    if (offer.maxDiscount) {
+      calculatedDiscount = Math.min(calculatedDiscount, offer.maxDiscount);
+    }
+  } else if (offer.discountType === 'BOGO') {
+    if (numSeats < 2) {
+      return {
+        valid: false,
+        discount: 0,
+        message: `${offer.code} requires minimum 2 seats in your booking to get 1 free!`,
+      };
+    }
+    // Price of 1 single seat approximation
+    const singleSeatPrice = Math.round(ticketSubtotal / numSeats);
+    calculatedDiscount = Math.min(singleSeatPrice, offer.maxDiscount);
+  }
+
+  // Ensure discount doesn't exceed ticket subtotal
+  calculatedDiscount = Math.min(calculatedDiscount, ticketSubtotal);
+
+  return {
+    valid: true,
+    discount: calculatedDiscount,
+    offer,
+    message: `Offer "${offer.code}" applied successfully! You saved ₹${calculatedDiscount}.`,
+  };
+};

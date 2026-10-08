@@ -1,0 +1,47 @@
+# CineGo - Dependencies
+node_modules/
+dist/
+build/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.production
+backend/.env
+frontend/.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Oracle
+*.dmp
+*.log
+*.trc
+
+# Coverage
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite
+*.local
+
+# Misc
+*.bak
+*.tmp
