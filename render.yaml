@@ -6,7 +6,7 @@ services:
     name: cinego-fullstack
     env: node
     plan: free
-    region: singapore
+    region: oregon
     buildCommand: npm run build
     startCommand: npm start
     healthCheckPath: /health
